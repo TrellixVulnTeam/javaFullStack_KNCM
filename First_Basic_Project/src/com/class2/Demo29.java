@@ -2,6 +2,7 @@ package com.class2;
 
 class Company{
     public void publicTest(){
+
         System.out.println("Public test");
     }
     private void privateTest(){
