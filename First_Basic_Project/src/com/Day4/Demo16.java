@@ -10,6 +10,7 @@ public class Demo16 {
         map.put(1,"mahi");
         map.put(2,"Rafa");
         map.put(3,"md");
+        map.put(4,null);
 
         for (Map.Entry entry: map.entrySet()){
             System.out.println(entry.getKey()+" : "+entry.getValue());
