@@ -5,25 +5,19 @@ import java.util.Map;
 
 public class DemoHashTable {
     public static void main(String[] args) {
-        Hashtable<Integer,String> hashtable=new Hashtable<>();
-        hashtable.put(1,"mahi");
-        hashtable.put(2,"Rafa");
-        hashtable.put(3,"Hello");
+        Hashtable<Integer, String> hashtable = new Hashtable<>();
+        hashtable.put(1, "mahi");
+        hashtable.put(2, "Rafa");
+        hashtable.put(3, "Hello");
 
         // will not allow duplicate key
-        hashtable.put(3,"Hello");
+        hashtable.put(3, "Hello");
 
 
         // HashTable will not accept any null value
-        for (Map.Entry entry: hashtable.entrySet()){
-            try {
-                System.out.println(entry.getKey()+": "+entry.getValue());
-            }catch (NullPointerException n){
-                System.out.println(n.getMessage());
-            }
-
+        for (Map.Entry entry : hashtable.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-
 
 
     }
