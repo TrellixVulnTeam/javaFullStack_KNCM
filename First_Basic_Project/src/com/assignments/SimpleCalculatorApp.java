@@ -11,7 +11,7 @@ public class SimpleCalculatorApp {
         int first = input.nextInt();
         System.out.println("Enter your Second Number: ");
         int second = input.nextInt();
-        System.out.println(" 1. Add\n2. Subtract\n3. Multiple\n4. Divide\n5. Exit");
+        System.out.println("1. Add\n2. Subtract\n3. Multiple\n4. Divide\n5. Exit");
 
         int option = 5;
         option = input.nextInt();
