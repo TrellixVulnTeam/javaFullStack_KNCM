@@ -1,12 +1,11 @@
 package com.company;
 
-import com.company.dao.IBankAccount;
-
 import java.util.Arrays;
 
+/*
 public class BankAccount implements IBankAccount {
 
-    private static int accountNum=0;
+    private static int accountNum = 0;
     private double balance;
     //private double amount;
     private User[] users;
@@ -14,9 +13,9 @@ public class BankAccount implements IBankAccount {
     public BankAccount() {
     }
 
-    public BankAccount(double balance,  User[] users) {
+    public BankAccount(double balance, User[] users) {
         this.balance = balance;
-       // this.amount = amount;
+        // this.amount = amount;
         this.users = users;
     }
 
@@ -46,7 +45,6 @@ public class BankAccount implements IBankAccount {
     }
 
 
-
     @Override
     public String toString() {
         return "BankAccount{" +
@@ -55,14 +53,85 @@ public class BankAccount implements IBankAccount {
                 '}';
     }
 
-
     @Override
-    public boolean deposit(double amount) {
-        return false;
+    public double deposit(double amount) {
+        if (amount < 0) {
+            System.out.println("please enter a valid amount ");
+        } else {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+        }
+        return balance;
     }
 
     @Override
-    public boolean withdraw(double amount) {
-        return false;
+    public double withdraw(double amount) {
+        if (balance < amount) {
+            System.out.println("Not enough balance on your account.");
+            return 0;
+        } else {
+            balance -= amount;
+            System.out.println("Successfully withdraw: " + amount);
+        }
+        return balance;
     }
 }
+
+class SavingAccount implements IBankAccount {
+    private double balance;
+
+    @Override
+    public double deposit(double amount) {
+        if (amount < 0) {
+            System.out.println("please enter a valid amount ");
+        } else {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+        }
+        return balance;
+    }
+
+
+    @Override
+    public double withdraw(double amount) {
+        if (balance < amount) {
+            System.out.println("Not enough balance on your account.");
+            return 0;
+        } else {
+            balance -= amount;
+            System.out.println("Successfully withdraw: " + amount);
+        }
+        return balance;
+    }
+}
+
+class CheckingAccount implements IBankAccount {
+
+    private double balance;
+
+    @Override
+    public double deposit(double amount) {
+        if (amount < 0) {
+            System.out.println("please enter a valid amount ");
+        } else {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+        }
+        return balance;
+    }
+
+    @Override
+    public double withdraw(double amount) {
+        if (balance < amount) {
+            System.out.println("Not enough balance on your account.");
+            return 0;
+        } else {
+            balance -= amount;
+            System.out.println("Successfully withdraw: " + amount);
+        }
+        return balance;
+    }
+}
+
+
+ */

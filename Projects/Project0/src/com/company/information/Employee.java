@@ -1,30 +1,17 @@
-package com.company;
+package com.company.information;
 
-public class User {
-
-    private int id;
+public class Employee {
+    private int employeeId;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public User(){
-
-    }
-    public User(int id, String firstName, String lastName, String email, String password) {
-        this.id = id;
+    public Employee(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -61,8 +48,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
+        return "Employee{" +
+                "employeeId=" + employeeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
