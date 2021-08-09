@@ -1,18 +1,31 @@
 package com.company.information;
 
 public class Admin {
+
     private int adminId;
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
 
-    public Admin(int adminId, String firstName, String lastName, String email, String password) {
+   public Admin(){
+
+   }
+
+    public Admin(int adminId, String firstName, String lastName, String username, String password) {
         this.adminId = adminId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
+    }
+
+    public int getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getFirstName() {
@@ -31,12 +44,12 @@ public class Admin {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -53,7 +66,7 @@ public class Admin {
                 "adminId=" + adminId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

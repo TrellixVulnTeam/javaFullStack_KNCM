@@ -12,7 +12,9 @@ public class OpenCustomerAccount {
 
     static Scanner input=new Scanner(System.in);
 
+    static Customer customer=new Customer();
     static CustomerDao customerDao=new CustomerDaoImpl();
+
     static BankAccountDao bankAccountDao=new BankAccountDaoImpl();
 
 
@@ -34,8 +36,15 @@ public class OpenCustomerAccount {
         }while (balance<0);
 
         try {
+            customer.setFirstName(fName);
+            customer.setLastName(lName);
+            customer.setUsername(uName);
+            customer.setPassword(pWord);
+
+            customerDao.addCustomer(customer);
+
             bankAccountDao.insertNewCustomerData(balance);
-            customerDao.addCustomer(fName,lName,uName,pWord);
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

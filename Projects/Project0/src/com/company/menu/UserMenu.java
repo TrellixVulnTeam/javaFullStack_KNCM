@@ -1,239 +1,332 @@
 package com.company.menu;
 
+import com.company.dao.AdminDao;
+import com.company.dao.BankAccountDao;
+import com.company.dao.CustomerDao;
+import com.company.dao.factory.AdminDaoFactory;
+import com.company.dao.factory.BankAccountDaoFactory;
+import com.company.dao.factory.CustomerDaoFactory;
+import com.company.information.*;
 
-import com.company.information.Customer;
-
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class UserMenu {
 
-    static int menu;
+    static int menu = 0;
     static Scanner input = new Scanner(System.in);
-
+    //admin
+    static Admin admin = new Admin();
+    static AdminDao adminDao = AdminDaoFactory.getAdminDao();
+    //customer
     static Customer customer = new Customer();
-    // static BankAccount bankAccount = new BankAccount();
+    static CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
+    // bank account
+    static BankAccount bankAccount = new BankAccount();
+    static BankAccountDao bankAccountDao = BankAccountDaoFactory.getBankAccountDao();
 
 
-    public static void option() {
+    public static void option() throws SQLException {
 
-        System.out.println("Welcome to our Bank.\nPlease select your option here");
+        do {
 
-        System.out.println("1. Open a Saving Account");
-        System.out.println("2. Open a Checking Account");
-        System.out.println("3. Customer");
-        System.out.println("4. Employee");
-        System.out.println("5. Admin");
-        System.out.println("6. Quit");
 
-        menu = input.nextInt();
+            System.out.println("Welcome to our Bank.\nPlease select your option here");
 
-        switch (menu) {
-            case 1:
-                System.out.println("Thank you for choosing Saving Account\n");
-                createSavingAcc();
-                break;
-            case 2:
-                System.out.println("Thank you for choosing Checking Account\n");
-                createCheckingAcc();
-                break;
-            case 3:
-                System.out.println("Welcome to our Bank\n");
-                customerLogin();
-                break;
-            case 4:
-                System.out.println("Welcome to our Employee portal\n");
-                employeeLogin();
-                break;
-            case 5:
-                System.out.println("Welcome to Admin page\n");
-                adminLogin();
-                break;
-            case 6:
-                System.out.println("Thank you for choosing our Bank Application\n");
-                break;
-            default:
-                System.out.println("Invalid Option!! Please select your option\n");
-                option();
-        }
-    }
+            System.out.println("1. Open an Account");
+            System.out.println("2. Customer Login");
+            System.out.println("3. Admin Login");
+            System.out.println("4. Quit");
 
-    //1.
-    public static void createSavingAcc() {
+            menu = input.nextInt();
 
-        System.out.println("Welcome to our Saving Account page.");
-        Customer user = new Customer();
-        System.out.println("Enter your first name: ");
-        input.nextLine();
-        System.out.println("Enter your last name: ");
-        input.nextLine();
-        System.out.println("Enter your email name: ");
-        input.nextLine();
-        System.out.println("Enter your password name: ");
-        input.nextLine();
-        option();
+            switch (menu) {
+                case 1:
+                    System.out.println("Thank you for Opening an Account\n");
+                    OpenCustomerAccount.openAccount();
+                    break;
+                case 2:
+                    System.out.println("Welcome to Customer portal!!!!!!!!!!!!\n");
+                    customerLogin();
+                    break;
+                case 3:
+                    System.out.println("Welcome to Admin page\n");
+                    adminLogin();
+                    break;
+                case 4:
+                    System.out.println("Thank you for choosing our Bank Application\n");
+                    break;
+                default:
+                    System.out.println("Invalid Option!! Please select your option from 1 to 4\n");
+                    option();
+            }
+        }while (menu!=4);
 
     }
+
 
     //2.
-    public static void createCheckingAcc() {
+    public static void customerLogin() throws SQLException {
 
-        System.out.println("Welcome to our Checking Account page.");
-        Customer user = new Customer();
-        System.out.println("Enter your first name: ");
-        input.nextLine();
-        System.out.println("Enter your last name: ");
-        input.nextLine();
-        System.out.println("Enter your email name: ");
-        input.nextLine();
-        System.out.println("Enter your password name: ");
-        input.nextLine();
-        option();
+        LoginAll.customerLogin();
+
+    }
+
+    public static void customerLog() throws SQLException {
+
+        do {
+
+
+            System.out.println("Welcome to the customer portal.");
+
+            System.out.println("1. View Balance.");
+            System.out.println("2. View all account Information.");
+            System.out.println("3. Find account by account id");
+            System.out.println("4. Deposit.");
+            System.out.println("5. Withdraw.");
+            System.out.println("6. Update.");
+            System.out.println("7. Logout.");
+
+            menu = input.nextInt();
+
+            switch (menu) {
+                case 1:
+                    System.out.println("Please enter your account id");
+                    int accId = input.nextInt();
+                    bankAccountDao.findBalaceByAccId(accId);
+                    break;
+                case 2:
+                    bankAccountDao.viewAccountById();
+                    break;
+                case 3:
+                    System.out.println("Please enter your account id");
+                    int accId2 = input.nextInt();
+                    bankAccountDao.getByAccId(accId2);
+                    break;
+                case 4:
+                    bankAccountDao.deposit();
+                    break;
+                case 5:
+                    bankAccountDao.withdraw();
+                    break;
+                case 6:
+                    System.out.println("Please enter your account id");
+                    int accId3 = input.nextInt();
+                    System.out.println("Please enter your balance");
+                    double amount = input.nextDouble();
+
+                    bankAccountDao.updateAllBalance(accId3, accId3);
+                    break;
+                case 7:
+                    System.out.println("Successfully Logout.\n");
+                    break;
+                default:
+                    System.out.println("Wrong option!!! Try again");
+                    option();
+                    break;
+            }
+        }while (menu!=7);
     }
 
     //3.
-    public static void customerLogin() {
-
-        customerLogin();
-        customerLog();
+    public static void adminLogin() throws SQLException {
+        LoginAll.adminLogin();
     }
 
-    public static void customerLog() {
-        System.out.println("Welcome to customer portal.");
+    public static void adminLog() throws SQLException {
 
-        System.out.println("1. View Balance.");
-        System.out.println("2. Deposit");
-        System.out.println("3. Withdraw.");
-        System.out.println("4. Update.");
-        System.out.println("5. Logout.");
+        do {
 
-        switch (menu) {
-            case 1:
-                // view balance operation here
-                //database
-                System.out.println("Your balance is: ");
-                customerLog();
-                break;
-            case 2:
-                // deposit  operation here
-                //database
-                System.out.println("Your deposit balance is: ");
-                customerLog();
-                break;
-            case 3:
-                // Withdraw balance operation here
-                //database
-                System.out.println("Your Withdraw balance is: ");
-                customerLog();
-                break;
-            case 4:
-                // Update operation here
-                //database
-                System.out.println("Successfully update");
-                customerLog();
-                break;
-            case 5:
-                // Logout operation here
-                //database
-                System.out.println("Successfully Logout ");
-                customerLog();
-                break;
-            default:
-                System.out.println("Wrong option!!! Try again");
-                option();
-                break;
-        }
+
+            System.out.println("\nWelcome to admin portal.");
+            // all customer operations
+            System.out.println("All the Customer operations here:\n");
+            System.out.println("1. View all Customer.");
+            System.out.println("2. create Customer Account.");
+            System.out.println("3. Delete Customer.");
+            System.out.println("4. Update Customer Information.");
+            System.out.println("5. Find Customer by id.");
+            System.out.println("6. Find Customer by last name.");
+            System.out.println("7. Find Customer by Username.");
+            System.out.println("8. Find Customer by Password.\n");
+            System.out.println("All the Admin operations here:\n");
+            // all admin operations
+            System.out.println("9. Add admin..");
+            System.out.println("10. Update Admin.");
+            System.out.println("11. Delete Admin.");
+            System.out.println("12. View All the Admins.");
+            System.out.println("13. Find Admin by id.");
+            System.out.println("14. Find Admin by last name.");
+            System.out.println("15. Find Admin by Username.");
+            System.out.println("16. Find Admin by Password.");
+            // Lastly Admin Logout!!!
+            System.out.println("17. Logout.");
+
+
+            menu = input.nextInt();
+
+            switch (menu) {
+                //1. View all Customer.
+                case 1:
+                    System.out.println("All customer Information here ");
+                    adminDao.getCustomer();
+                    adminLog();
+                    break;
+                    //2. create Customer Account.
+                case 2:
+                    OpenCustomerAccount.openAccount();
+                    break;
+                    //3. Delete Customer.
+                case 3:
+                    System.out.println("Please enter customer Id here ");
+                    int custId = input.nextInt();
+                    adminDao.deleteCustomer(custId);
+                    break;
+                    //4. Update Customer Information.
+                case 4:
+                    System.out.println("Enter your employee Id: ");
+                    int upid = input.nextInt();
+                    System.out.println("Enter your first name: ");
+                    String fName = input.next();
+                    System.out.println("Enter your last name: ");
+                    String lName = input.next();
+                    System.out.println("Enter your username: ");
+                    String upUName = input.next();
+                    System.out.println("Enter your Password: ");
+                    String upPWord = input.next();
+
+                    customer.setCustId(upid);
+                    customer.setFirstName(fName);
+                    customer.setLastName(lName);
+                    customer.setUsername(upUName);
+                    customer.setPassword(upPWord);
+                    adminDao.updateCustomer(customer);
+                    break;
+
+                    //5. Find Customer by id.
+                case 5:
+                    System.out.println("Enter customer id here");
+                    int custId2 = input.nextInt();
+                    adminDao.customerById(custId2);
+                    break;
+
+                    //6. Find Customer by last name.
+                case 6:
+                    System.out.println("Enter Customer last name: ");
+                    String cLName=input.next();
+                    adminDao.customerByLastName(cLName);
+                    break;
+                    //7. Find Customer by Username.
+                case 7:
+                    System.out.println("Enter Customer Username: ");
+                    String cUName=input.next();
+                    adminDao.customerByLastName(cUName);
+                    break;
+                    //8. Find Customer by Password.
+                case 8:
+                    System.out.println("Enter Customer Password: ");
+                    String cpName=input.next();
+                    adminDao.customerByLastName(cpName);
+                    break;
+
+                // All admin operations start here:
+
+                //9. Add admin.
+                case 9:
+                    System.out.println("Enter your first name: ");
+                    String adfName = input.next();
+                    System.out.println("Enter your last name: ");
+                    String adlName = input.next();
+                    System.out.println("Enter your username: ");
+                    String adUName = input.next();
+                    System.out.println("Enter your Password: ");
+                    String adPWord = input.next();
+
+                    admin.setFirstName(adfName);
+                    admin.setLastName(adlName);
+                    admin.setUsername(adUName);
+                    admin.setPassword(adPWord);
+
+                    adminDao.addAdmin(admin);
+
+                    break;
+
+                //10. Update Admin.
+
+                case 10:
+                    System.out.println("Enter your admin Id: ");
+                    int adid = input.nextInt();
+                    System.out.println("Enter your first name: ");
+                    String adName = input.next();
+                    System.out.println("Enter your last name: ");
+                    String alName = input.next();
+                    System.out.println("Enter your username: ");
+                    String aUName = input.next();
+                    System.out.println("Enter your Password: ");
+                    String aPWord = input.next();
+
+                    admin.setAdminId(adid);
+                    admin.setFirstName(adName);
+                    admin.setLastName(alName);
+                    admin.setUsername(aUName);
+                    admin.setPassword(aPWord);
+                    adminDao.updateAdmin(admin);
+                    break;
+
+                    //11. Delete Admin.
+                case 11:
+                    System.out.println("Please enter admin Id here ");
+                    int adid1 = input.nextInt();
+                    adminDao.deleteAdmin(adid1);
+                    break;
+
+                    //12. View All the Admins.
+                case 12:
+                    System.out.println("All Admin Information here ");
+                    adminDao.getAdmin();
+                    adminLog();
+                    break;
+
+                    //13. Find Admin by id.
+                case 13:
+                    System.out.println("Enter Admin id here");
+                    int adminId = input.nextInt();
+                    adminDao.adminById(adminId);
+                    break;
+
+                    //14. Find Admin by last name.
+                case 14:
+                    System.out.println("Enter Admin last name: ");
+                    String adLName=input.next();
+                    adminDao.customerByLastName(adLName);
+                    break;
+
+                    //15. Find Admin by Username.
+                case 15:
+                    System.out.println("Enter Admin Username: ");
+                    String admUName=input.next();
+                    adminDao.customerByLastName(admUName);
+                    break;
+                //16. Find Admin by Password.
+                case 16:
+                    System.out.println("Enter Admin Password: ");
+                    String admpName=input.next();
+                    adminDao.customerByLastName(admpName);
+                    break;
+
+                    //17. Logout.
+                case 17:
+                    System.out.println("Thank you using our bank application.  ");
+                    option();
+                    break;
+
+                default:
+                    System.out.println("Wrong option!!! Try again");
+                    option();
+                    break;
+            }
+        }while (menu!=17);
+
     }
 
-    //4.
-    public static void employeeLogin() {
-
-        employeeLogin();
-        employeeLog();
-    }
-
-    public static void employeeLog() {
-        System.out.println("Welcome to employee portal.");
-
-        System.out.println("1. View all Customer.");
-        System.out.println("2. create Customer Account.");
-        System.out.println("3. Update Customer Information.");
-        System.out.println("4. Logout.");
-
-        switch (menu) {
-            case 1:
-                System.out.println("All customer Information here ");
-                // database
-                employeeLog();
-                break;
-            case 2:
-                System.out.println("Create customer here ");
-                // database
-                employeeLog();
-                break;
-            case 3:
-                System.out.println("Update customer Information here ");
-                // database
-                employeeLog();
-                break;
-            case 4:
-                System.out.println("Thank you for using bank application ");
-                employeeLog();
-                break;
-            default:
-                System.out.println("Wrong option!!! Try again");
-                option();
-                break;
-        }
-
-    }
-
-    //5.
-    public static void adminLogin() {
-        adminLogin();
-        adminLog();
-    }
-
-    public static void adminLog() {
-        System.out.println("Welcome to admin portal.");
-
-        System.out.println("1. View all Customer.");
-        System.out.println("2. create Customer Account.");
-        System.out.println("3. Delete Customer.");
-        System.out.println("4. Update Customer Information.");
-        System.out.println("5. Logout.");
-
-
-        switch (menu) {
-            case 1:
-                System.out.println("All customer Information here ");
-                // database
-                adminLog();
-                break;
-            case 2:
-                System.out.println("Create customer Information here ");
-                // database
-                adminLog();
-                break;
-            case 3:
-                System.out.println("Delete customer Information here ");
-                // database
-                adminLog();
-                break;
-            case 4:
-                System.out.println("Update customer Information here ");
-                // database
-                adminLog();
-                break;
-            case 5:
-                System.out.println("Thank you using our bank application.  ");
-                option();
-                break;
-            default:
-                System.out.println("Wrong option!!! Try again");
-                option();
-                break;
-        }
-
-
-    }
 }

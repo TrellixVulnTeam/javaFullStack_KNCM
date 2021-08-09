@@ -2,29 +2,41 @@ package com.company.information;
 
 public class BankAccount {
 
-    private  int accountId;
-    private double balance;
-    private double amount;
-    private String accountType;
 
+    private int accId;
+    private int custId;
+    private double balance;
+    private  double deposit;
+    private double withdraw;
 
     public BankAccount(){
 
+
     }
 
-    public BankAccount(int accountId, double balance, double amount, String accountType) {
-        this.accountId = accountId;
+    public BankAccount(int accId, int custId, double balance, double deposit, double withdraw) {
+        this.accId = accId;
+        this.custId = custId;
         this.balance = balance;
-        this.amount = amount;
-        this.accountType = accountType;
+        this.deposit = deposit;
+        this.withdraw = withdraw;
     }
 
-    public int getAccountId() {
-        return accountId;
+
+    public int getAccId() {
+        return accId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccId(int accId) {
+        this.accId = accId;
+    }
+
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
     }
 
     public double getBalance() {
@@ -35,29 +47,30 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getDeposit() {
+        return deposit;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
     }
 
-    public String getAccountType() {
-        return accountType;
+    public double getWithdraw() {
+        return withdraw;
     }
 
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
+    public void setWithdraw(double withdraw) {
+        this.withdraw = withdraw;
     }
 
     @Override
     public String toString() {
         return "BankAccount{" +
-                "accountId=" + accountId +
+                "acc_id=" + accId +
+                ", cust_id=" + custId +
                 ", balance=" + balance +
-                ", amount=" + amount +
-                ", accountType='" + accountType + '\'' +
+                ", deposit=" + deposit +
+                ", withdraw=" + withdraw +
                 '}';
     }
 }

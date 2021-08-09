@@ -2,21 +2,38 @@ package com.company.information;
 
 public class Customer {
 
-    private int userId;
+    private int custId;
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
 
-    public Customer(String firstName, String lastName, String email, String password) {
+    // no args constructor
+    public Customer() {
+
+    }
+
+    public Customer(int custId, String firstName, String lastName, String username, String password) {
+        this.custId = custId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
     }
 
-    public Customer() {
+    public Customer(String firstName, String lastName, String username, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
 
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
     }
 
     public String getFirstName() {
@@ -35,12 +52,12 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -54,10 +71,10 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "userId=" + userId +
+                "custId=" + custId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
