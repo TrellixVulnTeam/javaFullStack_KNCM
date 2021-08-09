@@ -19,7 +19,7 @@ public class Main {
             System.out.println("2. Update Employee");
             System.out.println("3. Delete Employee");
             System.out.println("4. Read Employee");
-            System.out.println("5 Find Employee By Id: ");
+            System.out.println("5. Find Employee By Id: ");
             System.out.println("6. Exit");
 
             option = input.nextInt();

@@ -60,7 +60,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         int count = preparedStatement.executeUpdate();
 
         if (count > 0) {
-            System.out.println("Employee deleted!!!!!!!!11");
+            System.out.println("Employee deleted!!!!!!!!");
         } else {
             System.out.println("Something went wrong");
         }
