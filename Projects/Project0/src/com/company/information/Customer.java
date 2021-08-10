@@ -7,18 +7,19 @@ public class Customer {
     private String lastName;
     private String username;
     private String password;
-
+    private double balance;
     // no args constructor
     public Customer() {
 
     }
 
-    public Customer(int custId, String firstName, String lastName, String username, String password) {
+    public Customer(int custId, String firstName, String lastName, String username, String password,double balance) {
         this.custId = custId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.balance=balance;
     }
 
     public Customer(String firstName, String lastName, String username, String password) {
@@ -68,6 +69,14 @@ public class Customer {
         this.password = password;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -76,6 +85,7 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 }

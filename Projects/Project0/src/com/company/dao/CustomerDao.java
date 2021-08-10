@@ -26,5 +26,8 @@ public interface CustomerDao {
 
     Customer findByPassword(String password) throws SQLException;
 
+    boolean customerLoginUsername(String username,String password) throws SQLException;
+    boolean customerLoginPassword(String username,String password) throws SQLException;
+
 
 }

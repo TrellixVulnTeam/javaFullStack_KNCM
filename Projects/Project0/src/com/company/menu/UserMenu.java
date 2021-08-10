@@ -60,6 +60,7 @@ public class UserMenu {
                     System.out.println("Invalid Option!! Please select your option from 1 to 4\n");
                     option();
             }
+
         }while (menu!=4);
 
     }
@@ -104,7 +105,9 @@ public class UserMenu {
                     bankAccountDao.getByAccId(accId2);
                     break;
                 case 4:
-                    bankAccountDao.deposit();
+                    System.out.println("Enter your account id here");
+                    int accid=input.nextInt();
+                    bankAccountDao.deposit(accid);
                     break;
                 case 5:
                     bankAccountDao.withdraw();
@@ -168,7 +171,7 @@ public class UserMenu {
             switch (menu) {
                 //1. View all Customer.
                 case 1:
-                    System.out.println("All customer Information here ");
+                    System.out.println("All customer Information here\n");
                     adminDao.getCustomer();
                     adminLog();
                     break;

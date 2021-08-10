@@ -22,17 +22,17 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public void addCustomer(Customer customer) throws SQLException {
-        String sql="insert into customer(first_name,last_name,username,password) values (?,?,?,?)";
+        String sql = "insert into customer(first_name,last_name,username,password,balance) values (?,?,?,?,?)";
 
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        preparedStatement.setString(1,customer.getFirstName());
+        preparedStatement.setString(1, customer.getFirstName());
         preparedStatement.setString(2, customer.getLastName());
-        preparedStatement.setString(3,customer.getUsername());
-        preparedStatement.setString(4,customer.getPassword());
-
-        int count=preparedStatement.executeUpdate();
-        if (count>0)
+        preparedStatement.setString(3, customer.getUsername());
+        preparedStatement.setString(4, customer.getPassword());
+        preparedStatement.setDouble(5,customer.getBalance());
+        int count = preparedStatement.executeUpdate();
+        if (count > 0)
             System.out.println(" Customer added...");
         else
             System.out.println("Something went wrong.\nPlease try again");
@@ -59,12 +59,12 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public int findByAccId() throws SQLException {
 
-        String sql="select acc_id from bank_account";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
-        ResultSet rs=preparedStatement.executeQuery();
+        String sql = "select acc_id from bank_account";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
 
-        while (rs.next()){
-            findId=rs.getInt(1);
+        while (rs.next()) {
+            findId = rs.getInt(1);
         }
         return findId;
     }
@@ -81,7 +81,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
         }
 
         if (c == null)
@@ -103,7 +103,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
         }
 
         if (c == null)
@@ -122,22 +122,18 @@ public class CustomerDaoImpl implements CustomerDao {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, username);
         ResultSet rs = preparedStatement.executeQuery();
-
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-            CustomerDaoImpl.findId=rs.getInt(1);
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
 
         }
-
         if (c == null)
             System.out.println("Please provide the right Customer Username .\n");
         else {
-            //System.out.println(c + "\n");
-            System.out.println("Customer Logged in!!!!\n");
+            System.out.println(c + "\n");
+            System.out.println("Customer username correct!!!!\n");
         }
-
         return c;
     }
 
@@ -148,20 +144,53 @@ public class CustomerDaoImpl implements CustomerDao {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, password);
         ResultSet rs = preparedStatement.executeQuery();
-
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            System.out.println("This is your all information\n:"+c + "\n");
         }
-
         if (c == null)
             System.out.println("Please provide the right Customer Password .\n");
         else {
             System.out.println("This is your all information\n:"+c + "\n");
-            //System.out.println("");
+            System.out.println("Customer password correct!!!!\n");
         }
+
         return c;
+    }
+
+    @Override
+    public boolean customerLoginUsername(String username, String password) throws SQLException {
+
+
+        String sql="select username,password from customer where username=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setString(1,username);
+        ResultSet rs=preparedStatement.executeQuery();
+
+        while (rs.next()){
+            rs.getString("username");
+            rs.getString("password");
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean customerLoginPassword(String username, String password) throws SQLException {
+
+        String sql="select username,password from customer where password=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setString(1,password);
+        ResultSet rs=preparedStatement.executeQuery();
+
+        while (rs.next()){
+            rs.getString("username");
+            rs.getString("password");
+            return true;
+        }
+        return false;
     }
 
 }

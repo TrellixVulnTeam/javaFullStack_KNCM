@@ -17,6 +17,8 @@ public interface AdminDao {
     Admin adminByLastName(String lastName) throws SQLException;
     Admin adminByUsername(String username) throws SQLException;
     Admin adminByPassword(String password) throws SQLException;
+    boolean adminLoginUsername(String username,String password) throws SQLException;
+    boolean adminLoginPassword(String username,String password) throws SQLException;
 
 
     //Customers

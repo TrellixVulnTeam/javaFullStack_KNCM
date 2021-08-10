@@ -19,7 +19,7 @@ public interface BankAccountDao {
     // view balance
     double findBalaceByAccId(int accId) throws SQLException;
 
-    void  deposit() throws SQLException;
+    void  deposit(int accId) throws SQLException;
 
     void withdraw() throws SQLException;
 

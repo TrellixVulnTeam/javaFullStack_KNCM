@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class LoginAll {
 
     static Scanner input = new Scanner(System.in);
+    static CustomerDao customerDao = new CustomerDaoImpl();
 
-    public static void adminLogin() {
+    public static void adminLogin() throws SQLException {
 
         System.out.println("Enter admin username: ");
         String username = input.next();
@@ -21,24 +22,20 @@ public class LoginAll {
         String password = input.next();
 
         //from database
-        AdminDao adminDao = new AdminDapImpl();
+        AdminDapImpl adminDao = new AdminDapImpl();
 
-        try {
-            if (adminDao.adminByUsername(username) == adminDao.adminByPassword(password)) {
-                System.out.println("Try next time!!!!! Thanks");
+        if ( adminDao.adminLoginUsername(username,password) && adminDao.adminLoginPassword(username,password)){
+            System.out.println("Admin logged in!!!!!!!!!!!!!");
+            UserMenu.adminLog();
+        }else {
+            System.out.println("Try next time!!!!! Thanks");
 
-            } else {
-                System.out.println("Admin logged in!!!!!!!!!!!!!");
-                UserMenu.adminLog();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
-
     }
 
-    public static void customerLogin() {
+    public static void customerLogin() throws SQLException {
 
+        Customer customer = new Customer();
 
         System.out.println("Enter customer username: ");
         String username = input.next();
@@ -46,18 +43,17 @@ public class LoginAll {
         String password = input.next();
 
         //from database
-        CustomerDao customerDao=new CustomerDaoImpl();
+        CustomerDao cd = new CustomerDaoImpl();
 
-        try {
-            if (customerDao.findByUsername(username) == customerDao.findByPassword(password)) {
-                System.out.println("Try next time!!!!! Thanks");
-            } else {
-                System.out.println("Customer logged in!!!!!!!!!!!!!");
-                UserMenu.customerLog();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+        if ( cd.customerLoginUsername(username,password) && cd.customerLoginPassword(username,password)){
+            System.out.println("Customer logged in!!!!!!!!!!!!!");
+            UserMenu.customerLog();
+        }else {
+            System.out.println("Try next time!!!!! Thanks");
+
         }
+
     }
 
 
