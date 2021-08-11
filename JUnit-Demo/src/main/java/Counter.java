@@ -1,2 +1,17 @@
-package PACKAGE_NAME;public class Counter {
+public class Counter {
+    private int count=0;
+    public Counter(){
+
+    }
+    public int increment(){
+        this.count++;
+        return this.count;
+    }
+
+    public int decrement(){
+
+        this.count--;
+        return this.count;
+    }
+
 }
