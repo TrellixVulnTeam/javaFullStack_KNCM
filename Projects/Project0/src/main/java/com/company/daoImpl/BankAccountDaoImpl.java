@@ -4,6 +4,7 @@ import com.company.connection.ConnectionFactory;
 import com.company.dao.BankAccountDao;
 import com.company.dao.CustomerDao;
 import com.company.information.BankAccount;
+import com.company.util.LogClass;
 
 import java.sql.*;
 import java.util.ArrayList;

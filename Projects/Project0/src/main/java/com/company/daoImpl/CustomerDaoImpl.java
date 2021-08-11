@@ -3,6 +3,7 @@ package com.company.daoImpl;
 import com.company.connection.ConnectionFactory;
 import com.company.dao.CustomerDao;
 import com.company.information.Customer;
+import com.company.util.LogClass;
 
 import java.sql.*;
 
@@ -36,7 +37,7 @@ public class CustomerDaoImpl implements CustomerDao {
             System.out.println(" Customer added...");
         else
             System.out.println("Something went wrong.\nPlease try again");
-
+        LogClass.LogIt("info","New Customer added to database for "+customer.getFirstName()+" "+customer.getLastName());
     }
 
     @Override

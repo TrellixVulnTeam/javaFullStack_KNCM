@@ -4,6 +4,7 @@ import com.company.connection.ConnectionFactory;
 import com.company.dao.AdminDao;
 import com.company.information.Admin;
 import com.company.information.Customer;
+import com.company.util.LogClass;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -200,12 +201,12 @@ public class AdminDapImpl implements AdminDao {
     @Override
     public boolean adminLoginUsername(String username, String password) throws SQLException {
 
-        String sql="select username,password from admin where username=?";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
-        preparedStatement.setString(1,username);
-        ResultSet rs=preparedStatement.executeQuery();
+        String sql = "select username,password from admin where username=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);
+        ResultSet rs = preparedStatement.executeQuery();
 
-        while (rs.next()){
+        while (rs.next()) {
             rs.getString("username");
             rs.getString("password");
             return true;
@@ -217,12 +218,12 @@ public class AdminDapImpl implements AdminDao {
 
     @Override
     public boolean adminLoginPassword(String username, String password) throws SQLException {
-        String sql="select username,password from admin where password=?";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
-        preparedStatement.setString(1,password);
-        ResultSet rs=preparedStatement.executeQuery();
+        String sql = "select username,password from admin where password=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, password);
+        ResultSet rs = preparedStatement.executeQuery();
 
-        while (rs.next()){
+        while (rs.next()) {
             rs.getString("username");
             rs.getString("password");
             return true;
@@ -247,6 +248,7 @@ public class AdminDapImpl implements AdminDao {
             System.out.println(" Customer added...");
         else
             System.out.println("Something went wrong.\nPlease try again");
+        LogClass.LogIt("info", "New Customer added to database for " + customer.getFirstName() + " " + customer.getLastName());
 
     }
 
@@ -284,7 +286,7 @@ public class AdminDapImpl implements AdminDao {
             System.out.println(" Customer Deleted!!!!!!!!!");
         else
             System.out.println("Something went wrong.\nPlease try again");
-
+        LogClass.LogIt("info", "Customer deleted: " + custId);
     }
 
     @Override
@@ -325,7 +327,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
         }
 
         if (c == null)
@@ -347,7 +349,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
         }
 
         if (c == null)
@@ -369,7 +371,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
         }
 
         if (c == null)
@@ -391,7 +393,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
         }
 
         if (c == null)
