@@ -5,23 +5,25 @@ public class BankAccount {
 
     private int accId;
     private int custId;
-    private double balance;
-//    private  double deposit;
-//    private double withdraw;
+    private int balance;
+    private double openingAmount;
+
+
 
     public BankAccount(){
 
 
     }
 
-    public BankAccount(int accId, int custId, double balance) {
+    public BankAccount(int accId, int custId, int balance, double openingAmount) {
         this.accId = accId;
         this.custId = custId;
         this.balance = balance;
-//        this.deposit = deposit;
-//        this.withdraw = withdraw;
+        this.openingAmount = openingAmount;
     }
+    public BankAccount(double balance){
 
+    }
 
     public int getAccId() {
         return accId;
@@ -39,38 +41,54 @@ public class BankAccount {
         this.custId = custId;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-//    public double getDeposit() {
-//        return deposit;
-//    }
-//
-//    public void setDeposit(double deposit) {
-//        this.deposit = deposit;
-//    }
-//
-//    public double getWithdraw() {
-//        return withdraw;
-//    }
+    public double getOpeningAmount() {
+        return openingAmount;
+    }
 
-//    public void setWithdraw(double withdraw) {
-//        this.withdraw = withdraw;
-//    }
+    public void setOpeningAmount(double openingAmount) {
+        this.openingAmount = openingAmount;
+    }
 
     @Override
     public String toString() {
         return "BankAccount{" +
-                "acc_id=" + accId +
-                ", cust_id=" + custId +
+                "accId=" + accId +
+                ", custId=" + custId +
                 ", balance=" + balance +
-//                ", deposit=" + deposit +
-//                ", withdraw=" + withdraw +
+                ", openingAmount=" + openingAmount +
                 '}';
     }
+
+    public synchronized void withdraw(int amount) {
+        System.out.println("Withdrawal processing");
+        if (this.balance < amount) {
+            System.out.println("Insufficient Balance");
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.balance -= amount;
+            System.out.println("Withdrawal complete");
+        }
+    }
+
+    public synchronized void deposit(int amount) {
+        System.out.println("Deposit processing.");
+        balance += amount;
+        System.out.println("Deposit completed");
+        notify();
+    }
+
+
+
+
 }

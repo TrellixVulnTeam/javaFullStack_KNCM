@@ -14,20 +14,19 @@ public class OpenCustomerAccount {
 
     static Customer customer=new Customer();
     static CustomerDao customerDao=new CustomerDaoImpl();
-
     static BankAccountDao bankAccountDao=new BankAccountDaoImpl();
 
 
     public static void openAccount(){
 
         double balance;
-        System.out.println("Please Enter your first name: ");
+        System.out.println("Please Enter Customer first name: ");
         String fName =input.next();
-        System.out.println("Please Enter your last name: ");
+        System.out.println("Please Enter Customer last name: ");
         String lName =input.next();
-        System.out.println("Please Enter your username: ");
+        System.out.println("Please Enter Customer username: ");
         String uName =input.next();
-        System.out.println("Please Enter your password: ");
+        System.out.println("Please Enter Customer password: ");
         String pWord =input.next();
 
         do{
@@ -42,8 +41,8 @@ public class OpenCustomerAccount {
             customer.setPassword(pWord);
 
             customerDao.addCustomer(customer);
-
             bankAccountDao.insertNewCustomerData(balance);
+
 
 
         } catch (SQLException throwables) {

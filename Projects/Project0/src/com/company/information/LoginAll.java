@@ -47,7 +47,8 @@ public class LoginAll {
 
 
         if ( cd.customerLoginUsername(username,password) && cd.customerLoginPassword(username,password)){
-            System.out.println("Customer logged in!!!!!!!!!!!!!");
+            System.out.println("Customer logged in!!!!!!!!!!!!!\n");
+            cd.findByUsername(username);
             UserMenu.customerLog();
         }else {
             System.out.println("Try next time!!!!! Thanks");

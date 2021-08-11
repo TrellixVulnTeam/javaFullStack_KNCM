@@ -29,6 +29,7 @@ public class Customer {
         this.password = password;
     }
 
+
     public int getCustId() {
         return custId;
     }

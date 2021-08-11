@@ -171,7 +171,7 @@ public class AdminDapImpl implements AdminDao {
         if (a == null)
             System.out.println("Please provide the right Admin username.\n");
         else
-            System.out.println("Admin Logged in!!!!!");
+            System.out.println(a + "\n");
 
         return a;
     }
@@ -193,8 +193,7 @@ public class AdminDapImpl implements AdminDao {
         if (a == null)
             System.out.println("Please provide the right Admin password.\n");
         else
-            //System.out.println("This is your all information\n:"+a+"\n");
-            System.out.println(" ");
+            System.out.println(a + "\n");
         return a;
     }
 

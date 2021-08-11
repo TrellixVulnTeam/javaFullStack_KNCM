@@ -22,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public void addCustomer(Customer customer) throws SQLException {
-        String sql = "insert into customer(first_name,last_name,username,password,balance) values (?,?,?,?,?)";
+        String sql = "insert into customer(first_name,last_name,username,password) values (?,?,?,?)";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -30,7 +30,7 @@ public class CustomerDaoImpl implements CustomerDao {
         preparedStatement.setString(2, customer.getLastName());
         preparedStatement.setString(3, customer.getUsername());
         preparedStatement.setString(4, customer.getPassword());
-        preparedStatement.setDouble(5,customer.getBalance());
+        //preparedStatement.setDouble(5,customer.getBalance());
         int count = preparedStatement.executeUpdate();
         if (count > 0)
             System.out.println(" Customer added...");
@@ -168,6 +168,8 @@ public class CustomerDaoImpl implements CustomerDao {
         PreparedStatement preparedStatement=connection.prepareStatement(sql);
         preparedStatement.setString(1,username);
         ResultSet rs=preparedStatement.executeQuery();
+
+        Customer c=null;
 
         while (rs.next()){
             rs.getString("username");

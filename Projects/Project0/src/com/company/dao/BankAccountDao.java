@@ -19,17 +19,14 @@ public interface BankAccountDao {
     // view balance
     double findBalaceByAccId(int accId) throws SQLException;
 
-    void  deposit(int accId) throws SQLException;
+    void depositAccount(BankAccount bankAccount) throws SQLException;
 
-    void withdraw() throws SQLException;
+    void withdrawAccount(BankAccount bankAccount) throws SQLException;
 
-    // delete account by account id
-    void  deleteAccount(int accId) throws SQLException;
+    void deleteAccount(int acc_id) throws SQLException;
 
     // update all balance
-    void  updateAllBalance(int accId,double balance) throws SQLException;
-
-
+    void updateAllBalance(int accId, double balance) throws SQLException;
 
 
 }

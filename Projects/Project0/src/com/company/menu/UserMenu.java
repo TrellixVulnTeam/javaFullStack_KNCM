@@ -105,20 +105,34 @@ public class UserMenu {
                     bankAccountDao.getByAccId(accId2);
                     break;
                 case 4:
-                    System.out.println("Enter your account id here");
-                    int accid=input.nextInt();
-                    bankAccountDao.deposit(accid);
+                    System.out.println("How much do you like to deposit: ");
+                    int amount=input.nextInt();
+                    System.out.println("what is your Account number: ");
+                    int accId1=input.nextInt();
+
+                    bankAccount.setAccId(accId1);
+                    bankAccount.deposit(amount);
+                    bankAccountDao.depositAccount(bankAccount);
                     break;
                 case 5:
-                    bankAccountDao.withdraw();
+                    System.out.println("How much do you like to withdraw: ");
+                    int withAmount=input.nextInt();
+                    System.out.println("what is your Account number: ");
+                    int accId3=input.nextInt();
+
+                    bankAccount.setAccId(accId3);
+                    bankAccount.withdraw(bankAccount.getBalance()-withAmount);
+                    bankAccountDao.withdrawAccount(bankAccount);
                     break;
+
+                    //Update
                 case 6:
                     System.out.println("Please enter your account id");
-                    int accId3 = input.nextInt();
+                    int upaccId = input.nextInt();
                     System.out.println("Please enter your balance");
-                    double amount = input.nextDouble();
+                    double upbamount = input.nextDouble();
 
-                    bankAccountDao.updateAllBalance(accId3, accId3);
+                    bankAccountDao.updateAllBalance(upaccId, upbamount);
                     break;
                 case 7:
                     System.out.println("Successfully Logout.\n");
@@ -177,6 +191,7 @@ public class UserMenu {
                     break;
                     //2. create Customer Account.
                 case 2:
+                    //adminDao.addCustomer(customer);
                     OpenCustomerAccount.openAccount();
                     break;
                     //3. Delete Customer.
@@ -223,13 +238,13 @@ public class UserMenu {
                 case 7:
                     System.out.println("Enter Customer Username: ");
                     String cUName=input.next();
-                    adminDao.customerByLastName(cUName);
+                    adminDao.customerByUsername(cUName);
                     break;
                     //8. Find Customer by Password.
                 case 8:
                     System.out.println("Enter Customer Password: ");
                     String cpName=input.next();
-                    adminDao.customerByLastName(cpName);
+                    adminDao.customerByPassword(cpName);
                     break;
 
                 // All admin operations start here:
@@ -301,20 +316,20 @@ public class UserMenu {
                 case 14:
                     System.out.println("Enter Admin last name: ");
                     String adLName=input.next();
-                    adminDao.customerByLastName(adLName);
+                    adminDao.adminByLastName(adLName);
                     break;
 
                     //15. Find Admin by Username.
                 case 15:
                     System.out.println("Enter Admin Username: ");
                     String admUName=input.next();
-                    adminDao.customerByLastName(admUName);
+                    adminDao.adminByUsername(admUName);
                     break;
                 //16. Find Admin by Password.
                 case 16:
                     System.out.println("Enter Admin Password: ");
                     String admpName=input.next();
-                    adminDao.customerByLastName(admpName);
+                    adminDao.adminByPassword(admpName);
                     break;
 
                     //17. Logout.
