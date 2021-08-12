@@ -71,7 +71,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
         while (rs.next()) {
             double balance = rs.getDouble("balance");
-            System.out.println("Your balance is :" + balance);
+            System.out.println("Your balance is :$" + balance);
         }
 
     }
@@ -218,8 +218,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
             if (count > 0) {
 
-                System.out.println(balance + " has been deposit.");
-                System.out.println(updateBalance + " is your updated balance");
+                System.out.println("$"+balance + " has been deposit to this account number :"+accId);
+                System.out.println("*****************************************");
+                System.out.println("Your updated balance is $"+updateBalance+"\n");
 
             } else {
                 System.out.println("Something went wrong with deposit!!!!");
@@ -250,10 +251,11 @@ public class CustomerDaoImpl implements CustomerDao {
 
                 int count = preparedStatement2.executeUpdate();
                 if (count > 0) {
-                    System.out.println("$"+balance + " has been withdrawed!!!! ");
-                    System.out.println(updateBalance + " is your updated balance!!!!");
+                    System.out.println("$"+balance + " has been withdrawed from this account number :"+accId);
+                    System.out.println("*****************************************");
+                    System.out.println("Your updated balance is $"+updateBalance+"\n");
                 } else {
-                    System.out.println("Something went Wrong!!!!");
+                    System.out.println("You do not sufficient balance on your account!!!");
                 }
             } else {
                 System.out.println("Balance not updated!!!!");

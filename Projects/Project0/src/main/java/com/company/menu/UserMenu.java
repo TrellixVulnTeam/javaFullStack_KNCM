@@ -77,12 +77,11 @@ public class UserMenu {
             System.out.println("Welcome to the customer portal.");
 
             System.out.println("1. View Balance.");
-            System.out.println("2. Find account by account id");
-            System.out.println("3. Deposit.");
-            System.out.println("4. Withdraw.");
-            System.out.println("5. Update.");
-            System.out.println("6. Transfer money to other account.");
-            System.out.println("7. Logout.");
+            System.out.println("2. Deposit.");
+            System.out.println("3. Withdraw.");
+            System.out.println("4. Update information.");
+            System.out.println("5. Transfer money to other account.");
+            System.out.println("6. Logout.");
 
             menu = input.nextInt();
 
@@ -93,13 +92,9 @@ public class UserMenu {
 
                         customerDao.viewBalance(custId);
                     break;
-                case 2:
-                    System.out.println("Please enter your account id");
-                    int accId2 = input.nextInt();
-                    //bankAccountDao.getByAccId(accId2);
-                    break;
+
                     //deposit
-                case 3:
+                case 2:
                     System.out.println("How much do you like to deposit: ");
                     double amount=input.nextDouble();
                     System.out.println("what is your Account number: ");
@@ -109,7 +104,7 @@ public class UserMenu {
                     break;
 
                     //withdraw
-                case 4:
+                case 3:
                     System.out.println("How much do you like to withdraw: ");
                     double withAmount=input.nextInt();
                     System.out.println("what is your Account number: ");
@@ -118,14 +113,27 @@ public class UserMenu {
                     break;
 
                     //Update
-                case 5:
-                    System.out.println("Please enter your account id");
-                    int upaccId = input.nextInt();
-                    System.out.println("Please enter your balance");
-                    double upbamount = input.nextDouble();
+                case 4:
+                    System.out.println("Enter your Customer Id: ");
+                    int upid = input.nextInt();
+                    System.out.println("Enter your first name: ");
+                    String fName = input.next();
+                    System.out.println("Enter your last name: ");
+                    String lName = input.next();
+                    System.out.println("Enter your username: ");
+                    String upUName = input.next();
+                    System.out.println("Enter your Password: ");
+                    String upPWord = input.next();
+
+                    customer.setCustId(upid);
+                    customer.setFirstName(fName);
+                    customer.setLastName(lName);
+                    customer.setUsername(upUName);
+                    customer.setPassword(upPWord);
+                    customerDao.updateCustomer(customer);
                     break;
                     //Transfer
-                case 6:
+                case 5:
                     System.out.println("Enter your transfer from the Account id:");
                     int withd=input.nextInt();
                     System.out.println("Enter your transfer to the Account id:");
@@ -137,7 +145,7 @@ public class UserMenu {
                     customerDao.withdraw(withd,amount2);
                     break;
 
-                case 7:
+                case 6:
                     System.out.println("Successfully Logout.\n");
                     break;
                 default:
@@ -145,7 +153,7 @@ public class UserMenu {
                     option();
                     break;
             }
-        }while (menu!=7);
+        }while (menu!=6);
     }
 
     //3.
