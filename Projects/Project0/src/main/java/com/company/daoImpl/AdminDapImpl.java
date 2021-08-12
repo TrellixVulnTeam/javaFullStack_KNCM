@@ -327,7 +327,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)
@@ -349,7 +349,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)
@@ -371,7 +371,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)
@@ -393,7 +393,7 @@ public class AdminDapImpl implements AdminDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)

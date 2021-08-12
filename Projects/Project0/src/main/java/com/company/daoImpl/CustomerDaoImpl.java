@@ -2,6 +2,7 @@ package com.company.daoImpl;
 
 import com.company.connection.ConnectionFactory;
 import com.company.dao.CustomerDao;
+import com.company.information.BankAccount;
 import com.company.information.Customer;
 import com.company.util.LogClass;
 
@@ -33,11 +34,46 @@ public class CustomerDaoImpl implements CustomerDao {
         preparedStatement.setString(4, customer.getPassword());
         //preparedStatement.setDouble(5,customer.getBalance());
         int count = preparedStatement.executeUpdate();
+
         if (count > 0)
             System.out.println(" Customer added...");
+
         else
             System.out.println("Something went wrong.\nPlease try again");
-        LogClass.LogIt("info","New Customer added to database for "+customer.getFirstName()+" "+customer.getLastName());
+
+        LogClass.LogIt("info", "New Customer added to database for " + customer.getFirstName() + " " + customer.getLastName());
+    }
+
+
+    @Override
+    public void addBankAccount(BankAccount bankAccount) throws SQLException {
+        String sql = "insert into bank_account (cust_id,balance) values(?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, bankAccount.getCustId());
+        preparedStatement.setDouble(2, bankAccount.getBalance());
+
+        int count = preparedStatement.executeUpdate();
+        if (count > 0) {
+            System.out.println("Bank account created!!!!");
+        } else {
+            System.out.println("Something went wrong!!!!");
+        }
+
+    }
+
+    @Override
+    public void viewBalance(int cust_id) throws SQLException {
+
+        String sql = "select balance from bank_account where cust_id=" + cust_id;
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        // preparedStatement.setInt(1, cust_id);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            double balance = rs.getDouble("balance");
+            System.out.println("Your balance is :" + balance);
+        }
+
     }
 
     @Override
@@ -82,7 +118,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)
@@ -104,7 +140,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         if (c == null)
@@ -126,7 +162,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 
         }
         if (c == null)
@@ -148,13 +184,13 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer c = null;
 
         while (rs.next()) {
-            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getDouble(6));
-            System.out.println("This is your all information\n:"+c + "\n");
+            c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            System.out.println("This is your all information\n:" + c + "\n");
         }
         if (c == null)
             System.out.println("Please provide the right Customer Password .\n");
         else {
-            System.out.println("This is your all information\n:"+c + "\n");
+            System.out.println("This is your all information\n:" + c + "\n");
             System.out.println("Customer password correct!!!!\n");
         }
 
@@ -162,17 +198,85 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public void deposit(int accId, double balance) throws SQLException {
+
+        String sql = "select * from bank_account where acc_id= " + accId;
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        if (rs.next()) {
+
+            String sql2 = "update bank_account set balance=? where acc_id=?";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+
+            double updateBalance = balance + rs.getDouble("balance");
+            preparedStatement2.setDouble(1, updateBalance);
+            preparedStatement2.setInt(2, accId);
+
+            int count = preparedStatement2.executeUpdate();
+
+            if (count > 0) {
+
+                System.out.println(balance + " has been deposit.");
+                System.out.println(updateBalance + " is your updated balance");
+
+            } else {
+                System.out.println("Something went wrong with deposit!!!!");
+            }
+
+        }
+    }
+
+    @Override
+    public void withdraw(int accId, double balance) throws SQLException {
+
+
+        String sql = "select * from bank_account where acc_id= " + accId;
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        if (rs.next()) {
+            String sql2 = "update bank_account set balance=? where acc_id=?";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+
+            double updateBalance = rs.getDouble("balance");
+
+            if ((updateBalance - balance) > 0) {
+                updateBalance -= balance;
+                preparedStatement2.setDouble(1, updateBalance);
+                preparedStatement2.setInt(2, accId);
+
+                int count = preparedStatement2.executeUpdate();
+                if (count > 0) {
+                    System.out.println("$"+balance + " has been withdrawed!!!! ");
+                    System.out.println(updateBalance + " is your updated balance!!!!");
+                } else {
+                    System.out.println("Something went Wrong!!!!");
+                }
+            } else {
+                System.out.println("Balance not updated!!!!");
+            }
+
+
+        }
+
+
+    }
+
+    @Override
     public boolean customerLoginUsername(String username, String password) throws SQLException {
 
 
-        String sql="select username,password from customer where username=?";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
-        preparedStatement.setString(1,username);
-        ResultSet rs=preparedStatement.executeQuery();
+        String sql = "select username,password from customer where username=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);
+        ResultSet rs = preparedStatement.executeQuery();
 
-        Customer c=null;
+        Customer c = null;
 
-        while (rs.next()){
+        while (rs.next()) {
             rs.getString("username");
             rs.getString("password");
             return true;
@@ -183,17 +287,34 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean customerLoginPassword(String username, String password) throws SQLException {
 
-        String sql="select username,password from customer where password=?";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
-        preparedStatement.setString(1,password);
-        ResultSet rs=preparedStatement.executeQuery();
+        String sql = "select username,password from customer where password=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, password);
+        ResultSet rs = preparedStatement.executeQuery();
 
-        while (rs.next()){
+        while (rs.next()) {
             rs.getString("username");
             rs.getString("password");
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public void transferAmount(int accid, double amount) throws SQLException {
+        String sql = "select * from bank_account where acc_id=" + accid;
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+
+            int id = rs.getInt("acc_id");
+
+            deposit(id, amount);
+        }
+
     }
 
 }

@@ -1,10 +1,8 @@
 package com.company.menu;
 
 import com.company.dao.AdminDao;
-import com.company.dao.BankAccountDao;
 import com.company.dao.CustomerDao;
 import com.company.dao.factory.AdminDaoFactory;
-import com.company.dao.factory.BankAccountDaoFactory;
 import com.company.dao.factory.CustomerDaoFactory;
 import com.company.information.*;
 
@@ -23,7 +21,7 @@ public class UserMenu {
     static CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
     // bank account
     static BankAccount bankAccount = new BankAccount();
-    static BankAccountDao bankAccountDao = BankAccountDaoFactory.getBankAccountDao();
+    //static BankAccountDao bankAccountDao = BankAccountDaoFactory.getBankAccountDao();
 
 
     public static void option() throws SQLException {
@@ -86,43 +84,52 @@ public class UserMenu {
             System.out.println("4. Deposit.");
             System.out.println("5. Withdraw.");
             System.out.println("6. Update.");
-            System.out.println("7. Logout.");
+            System.out.println("7. Transfer money to other account.");
+            System.out.println("8. Logout.");
 
             menu = input.nextInt();
 
             switch (menu) {
                 case 1:
-                    System.out.println("Please enter your account id");
-                    int accId = input.nextInt();
-                    bankAccountDao.findBalaceByAccId(accId);
+                    System.out.println("Please enter your customer id");
+                    int custId = input.nextInt();
+
+                        customerDao.viewBalance(custId);
+                  //  bankAccountDao.findBalaceByAccId(accId);
                     break;
                 case 2:
-                    bankAccountDao.viewAccountById();
+                   // bankAccountDao.viewAccountById();
                     break;
                 case 3:
                     System.out.println("Please enter your account id");
                     int accId2 = input.nextInt();
-                    bankAccountDao.getByAccId(accId2);
+                    //bankAccountDao.getByAccId(accId2);
                     break;
+                    //deposit
                 case 4:
                     System.out.println("How much do you like to deposit: ");
-                    int amount=input.nextInt();
+                    double amount=input.nextDouble();
                     System.out.println("what is your Account number: ");
                     int accId1=input.nextInt();
 
+
+                    customerDao.deposit(accId1,amount);
+                    /*
                     bankAccount.setAccId(accId1);
                     bankAccount.deposit(amount);
                     bankAccountDao.depositAccount(bankAccount);
+
+                     */
+                   // customerDao.deposit(accId,amount);
+
                     break;
+                    //withdraw
                 case 5:
                     System.out.println("How much do you like to withdraw: ");
-                    int withAmount=input.nextInt();
+                    double withAmount=input.nextInt();
                     System.out.println("what is your Account number: ");
                     int accId3=input.nextInt();
-
-                    bankAccount.setAccId(accId3);
-                    bankAccount.withdraw(bankAccount.getBalance()-withAmount);
-                    bankAccountDao.withdrawAccount(bankAccount);
+                    customerDao.withdraw(accId3,withAmount);
                     break;
 
                     //Update
@@ -132,9 +139,20 @@ public class UserMenu {
                     System.out.println("Please enter your balance");
                     double upbamount = input.nextDouble();
 
-                    bankAccountDao.updateAllBalance(upaccId, upbamount);
                     break;
                 case 7:
+                    System.out.println("Enter your transfer from the Account id:");
+                    int withd=input.nextInt();
+                    System.out.println("Enter your transfer to the Account id:");
+                    int accid=input.nextInt();
+                    System.out.println("Enter your transfer amount: ");
+                    double amount2=input.nextDouble();
+
+                    customerDao.transferAmount(accid,amount2);
+                    customerDao.withdraw(withd,amount2);
+                    break;
+
+                case 8:
                     System.out.println("Successfully Logout.\n");
                     break;
                 default:
@@ -142,7 +160,7 @@ public class UserMenu {
                     option();
                     break;
             }
-        }while (menu!=7);
+        }while (menu!=8);
     }
 
     //3.

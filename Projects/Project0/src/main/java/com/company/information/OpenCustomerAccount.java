@@ -1,8 +1,6 @@
 package com.company.information;
 
-import com.company.dao.BankAccountDao;
 import com.company.dao.CustomerDao;
-import com.company.daoImpl.BankAccountDaoImpl;
 import com.company.daoImpl.CustomerDaoImpl;
 
 import java.sql.SQLException;
@@ -13,8 +11,8 @@ public class OpenCustomerAccount {
     static Scanner input=new Scanner(System.in);
 
     static Customer customer=new Customer();
+    static BankAccount bankAccount=new BankAccount();
     static CustomerDao customerDao=new CustomerDaoImpl();
-    static BankAccountDao bankAccountDao=new BankAccountDaoImpl();
 
 
     public static void openAccount(){
@@ -39,9 +37,13 @@ public class OpenCustomerAccount {
             customer.setLastName(lName);
             customer.setUsername(uName);
             customer.setPassword(pWord);
-
             customerDao.addCustomer(customer);
-            bankAccountDao.insertNewCustomerData(balance);
+            customerDao.findByUsername(uName);
+            System.out.println("Enter customer id: ");
+            int custId=input.nextInt();
+            bankAccount.setBalance(balance);
+            bankAccount.setCustId(custId);
+            customerDao.addBankAccount(bankAccount);
 
 
 
