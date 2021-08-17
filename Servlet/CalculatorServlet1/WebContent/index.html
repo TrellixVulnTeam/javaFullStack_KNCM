@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Calculator App</title>
+
+<style>
+
+	.wrapper{
+			
+		width: 40%;
+		margin: 0 auto;
+		padding: 20px;
+		font-size: 32px;
+		color: green;
+		border: 1px solid green;
+	
+	}
+
+</style>
+
+
+</head>
+<body>
+		<div class="wrapper">
+		
+			<h1>Calculator Apps</h1>
+			
+			<form action="calculator" method="post">
+				Enter First Number <input type="text" name="first_num" ><br> 
+				Enter Second Number <input type="text" name="second_num" ><br> 
+				
+				Select an Operation
+				<br>
+				
+					<input type="radio" name="operator" value="+">Addition
+					<input type="radio" name="operator" value="*">Multiply
+					<input type="radio" name="operator" value="/">Divide
+					<input type="radio" name="operator" value="-"> Substraction <br> 
+					<input type="reset">
+				
+					<input type="submit" value="Calculate" >
+			
+			</form>
+	
+		</div>
+
+
+	
+
+</body>
+</html>
