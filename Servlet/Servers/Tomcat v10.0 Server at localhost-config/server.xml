@@ -135,7 +135,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Servlet-demos" path="/Servlet-demos" reloadable="true" source="org.eclipse.jst.jee.server:Servlet-demos"/><Context docBase="CalculatorServlet1" path="/CalculatorServlet1" reloadable="true" source="org.eclipse.jst.jee.server:CalculatorServlet1"/><Context docBase="ServletCookies" path="/ServletCookies" reloadable="true" source="org.eclipse.jst.jee.server:ServletCookies"/></Host>
+      <Context docBase="Servlet-demos" path="/Servlet-demos" reloadable="true" source="org.eclipse.jst.jee.server:Servlet-demos"/><Context docBase="CalculatorServlet1" path="/CalculatorServlet1" reloadable="true" source="org.eclipse.jst.jee.server:CalculatorServlet1"/><Context docBase="ServletCookies" path="/ServletCookies" reloadable="true" source="org.eclipse.jst.jee.server:ServletCookies"/><Context docBase="ServletCookies2" path="/ServletCookies2" reloadable="true" source="org.eclipse.jst.jee.server:ServletCookies2"/><Context docBase="ServletCookies3" path="/ServletCookies3" reloadable="true" source="org.eclipse.jst.jee.server:ServletCookies3"/></Host>
     </Engine>
   </Service>
 </Server>
