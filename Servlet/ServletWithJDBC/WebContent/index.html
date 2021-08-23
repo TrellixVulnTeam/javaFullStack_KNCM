@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Input Form</title>
+</head>
+<body>
+<a href="index.html.html">Add Employee </a> |
+<a href="update.html">Update Employee </a> |
+<a href="delete.html">Delete Employee </a> |
+
+	<form action="AddEmployee" method="post">
+	
+		<p>Name:  <input type="text" name="name" placeholder="Name"/></p>
+		<p>Email: <input type="text" name="email" placeholder="Email"/></p>
+		
+		Gender 
+		<div>
+			<input type="radio" name="gender" value="Male"/>Male
+			<input type="radio" name="gender" value="Female"/>Female
+		</div>
+		
+		Country
+		
+		<select name="country">
+		
+			<option value="USA">USA</option>
+			<option value="UK">UK</option>
+			<option value="BAN">BAN</option>
+			<option value="GERMANY">GERMANY</option>
+			
+		</select>
+		
+		<input type="submit" value="Save"/><br>
+	
+		
+	</form>
+</body>
+</html>

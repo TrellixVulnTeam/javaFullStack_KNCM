@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Employee</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+<style>
+
+	body{
+		background-color: olive;
+	}
+
+	.wrapper{
+			
+		width: 40%;
+		border: 5px solid green;
+		margin: 0 auto;
+		padding: 20px;
+		color: blue;	
+		background-color:#B4E20A;
+	
+	}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<h1>Update Employee</h1>
+	<form action="updateEmployee" method="get">
+	
+		<p>Id: <input type="number" name="id" placeholder="Id" readonly=""/></p>
+		<p>Name:  <input type="text" name="name" placeholder="Name"/></p>
+		<p>Email: <input type="text" name="email" placeholder="Email"/></p>
+		
+		Gender 
+		<div>
+			<input type="radio" name="gender" value="Male"/>Male
+			<input type="radio" name="gender" value="Female"/>Female
+		</div>
+		
+		Country
+		
+		<select name="country">
+		
+			<option value="USA">USA</option>
+			<option value="UK">UK</option>
+			<option value="BAN">BAN</option>
+			<option value="GERMANY">GERMANY</option>
+			
+		</select>
+		
+		<input type="submit" value="update"/><br>
+	
+	</form>
+	
+</div>
+
+</body>
+</html>
