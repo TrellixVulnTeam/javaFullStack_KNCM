@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="result"></h1>
+
+
+
+    <script>
+
+        function print(data){
+            document.getElementById('result').innerHTML=data;
+
+        }
+
+        function addNum(a,b){
+            let sum=a+b;
+            return sum;
+        }
+
+        let result=addNum(20,4000);
+        let result2=addNum(20,40);
+
+
+        print(result);
+        // it will print last one always
+        print(result2);
+    </script>
+</body>
+</html>
