@@ -1,0 +1,28 @@
+<h1>Employee List</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    
+<tbody>
+    <tr *ngFor="let a of employees;trackBy: trackById">
+        <td>{{a.id}}</td>
+        <td>{{a.name}}</td>
+        <td>{{a.gender}}</td>
+        <td>{{a.email}}</td>
+    </tr>
+</tbody>
+
+</table>
+
+
+<button class="btn btn-promary" (click)="onButtonClicked()">Add Employee</button>
+
+
+
