@@ -1,0 +1,23 @@
+<h1>Department List</h1>
+
+<table class="table table-bordered">
+    <thead class="thead dark">
+        <tr>
+            <th>Id</th>
+            <th>name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let depart of departments">
+            <td>{{depart.id}}</td>
+            <td>{{depart.name}}</td>
+            <td>
+                <button class="btn btn-primary"(click)="onButtonClicked(depart)">Check</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+

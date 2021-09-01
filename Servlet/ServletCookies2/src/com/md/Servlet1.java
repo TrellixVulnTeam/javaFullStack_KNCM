@@ -22,7 +22,7 @@ public class Servlet1 extends HttpServlet{
 			out.println("<head>");
 			out.println("<title>Servlet state managment</title>");
 			out.println("</head>");
-			out.println("<body>");
+			out.println("<body style='background-color:grey'>");
 			
 			String name=request.getParameter("name");
 			

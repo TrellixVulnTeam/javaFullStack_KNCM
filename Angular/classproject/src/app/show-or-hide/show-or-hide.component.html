@@ -1,0 +1,28 @@
+<h1>...........Show and hide tables............</h1>
+
+<h1>Employee Table</h1>
+<table class="table table-bordered" *ngIf="isDisable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of employees;even as ev;odd as o"[style.background]="ev ? '#ccc': '#fff'">
+            <td>{{ev}}</td>
+            <td>{{e.id}}</td>
+            <td>{{e.name}}</td>
+            <td>{{e.email}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-primary"(click)="onButtonClicked()">show table</button>
+
+
+
+
+

@@ -1,0 +1,19 @@
+<div class="container">
+    <!-- <app-show-or-hide>Show and hide table</app-show-or-hide>
+    <hr><br>
+    <app-pipes>Pipes</app-pipes>
+    <hr><br>
+    <app-custome-pipes>Custom Pipes</app-custome-pipes>
+    <hr><br> -->
+    
+
+
+</div>
+
+<div class="parent">
+    <h1>App Component(Parent)</h1>
+    {{msg}}
+    <app-input-output (childEvent)="msg=$event"[childData]="parentData"></app-input-output>
+
+
+</div>

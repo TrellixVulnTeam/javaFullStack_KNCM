@@ -1,0 +1,42 @@
+<h1>......Pipes..........</h1>
+
+<h1>{{name}}</h1>
+<h1>{{name | uppercase}}</h1>
+<h1>{{name | lowercase}}</h1>
+<h1>{{name | titlecase}}</h1>
+
+<h1>{{msg}}</h1>
+<h1>{{msg | slice: 0:4}}</h1>
+
+<h1>person->{{person}}</h1>
+
+<h1>person with name->{{person | json}}</h1>
+
+<h1>person with first name->{{person.firstName}}</h1>
+
+
+<h1>{{1.236 | number: '1.2-3'}}</h1>
+
+<h1>{{1.236 | number: '2.4-5'}}</h1>
+
+<h1>{{1.236 | number: '3.1-2'}}</h1>
+
+
+<h1>{{ 0.20 | percent}}</h1>
+<h1>{{ 2000 | currency}}</h1>
+<h1>Pound currency {{3000 | currency : 'GBP'}}</h1>
+
+<h1>Pound currency text {{3000 | currency : 'GBP': 'code'}}</h1>
+
+
+<h1>{{ currentDate}}</h1>
+
+<h1>{{ currentDate | date:'short'}}</h1>
+
+<h1>{{ currentDate | date: 'shotDate'}}</h1>
+<h1>{{ currentDate | date : 'shortTime'}}</h1>
+<h1>{{ currentDate | date : 'mediumDate'}}</h1>
+
+
+
+

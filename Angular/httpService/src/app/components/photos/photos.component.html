@@ -1,0 +1,19 @@
+<h1>All photos</h1>
+
+<div class="row">
+    <div class="col-sm-3" *ngFor="let photo of photos">
+      <div class="card">
+          <img src="{{ photo.thumbnailUrl }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">{{ photo.title }}</h3>
+          <h5 class="card-title">{{ photo.id }}</h5>
+          <h5 class="card-title">{{ photo.url }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  
