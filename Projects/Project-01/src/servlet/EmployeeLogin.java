@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import com.md.User;
+
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
 import jakarta.servlet.RequestDispatcher;
@@ -19,7 +21,8 @@ public class EmployeeLogin extends HttpServlet{
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		User employee=new User();	
+		
 		response.setContentType("text/html");
 		
 		try(PrintWriter out =response.getWriter()){
@@ -46,9 +49,10 @@ public class EmployeeLogin extends HttpServlet{
 				System.out.println("successfully login");
 				
 				out.println("<h4>You're logged in</h4>");
-				out.println("<h2>Welcome to Companies Expenses Reimbursement System</h2>");
+				out.println("<h2>Welcome to Revature's Expenses Reimbursement System</h2>");
 
-				out.println("<h1></br>Welcome, "+username +" </h1>");
+				out.println("<h1></br>Welcome, "+username +" !!!!</h1>");
+				
 				
 				HttpSession session=request.getSession();
 				session.setAttribute("username", username);

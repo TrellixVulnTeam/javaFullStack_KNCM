@@ -33,7 +33,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		ps.setInt(1, reim.getEmplId());
 		ps.setDouble(2, reim.getAmount());
 		ps.setString(3,reim.getSubmitDate());
-		
+		ps.setString(4, reim.getType());
+		ps.setString(5, reim.getStatus());
+
 		int count=ps.executeUpdate();
 		
 		if (count>0) {
@@ -82,6 +84,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 	    	 reimbursement.setEmplId(rs.getInt(2));
 	    	 reimbursement.setAmount(rs.getDouble(3));
 	    	 reimbursement.setSubmitDate(rs.getString(4));
+	    	 reimbursement.setType(rs.getString(5));
+	    	 reimbursement.setStatus(rs.getString(6));
+
 
 	    	 reimbursements.add(reimbursement);
 	    	 
@@ -90,28 +95,69 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 	}
 
 	@Override
-	public void getReimbursementByUserId(int userId) throws SQLException {
+	public List<Reimbursement> getReimbursementByUserId(int userId) throws SQLException {
+		
+		List<Reimbursement> reimbursements=new ArrayList();
+		
 		String sql="select * from reimbursement where  empl_id=?";
-		
 		PreparedStatement ps=connection.prepareStatement(sql);
-		
 		ps.setInt(1, userId);
-		
 		ResultSet rs=ps.executeQuery();
 		
-		Reimbursement reim=null;
 		
 		while(rs.next()) {
-			 reim=new Reimbursement(rs.getInt(1),rs.getInt(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6));
-		}
+			Reimbursement reim=new Reimbursement(rs.getInt(1),rs.getInt(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6));
 		
-		if (reim==null) {
-			System.out.println("Please provide the right user id\n");
-		}else {
-			System.out.println(reim+"\n");
+			 reimbursements.add(reim);
 		}
 		
 		
+		return reimbursements;
+		
+		
+	}
+
+	@Override
+	public List<Reimbursement> getReimbursementType(String type) throws SQLException {
+		
+		List<Reimbursement> reimbursements=new ArrayList();
+		
+		String sql="select * from reimbursement where  type=?";
+		PreparedStatement ps=connection.prepareStatement(sql);
+		ps.setString(1, type);
+		ResultSet rs=ps.executeQuery();
+		
+		
+		while(rs.next()) {
+			Reimbursement reim=new Reimbursement(rs.getInt(1),rs.getInt(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6));
+		
+			 reimbursements.add(reim);
+		}
+		
+		
+		return reimbursements;
+	}
+
+	@Override
+	public List<Reimbursement> getReimbursementStatus(String status) throws SQLException {
+
+
+		List<Reimbursement> reimbursements=new ArrayList();
+		
+		String sql="select * from reimbursement where  status=?";
+		PreparedStatement ps=connection.prepareStatement(sql);
+		ps.setString(1, status);
+		ResultSet rs=ps.executeQuery();
+		
+		
+		while(rs.next()) {
+			Reimbursement reim=new Reimbursement(rs.getInt(1),rs.getInt(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6));
+		
+			 reimbursements.add(reim);
+		}
+		
+		
+		return reimbursements;
 	}
 
 }

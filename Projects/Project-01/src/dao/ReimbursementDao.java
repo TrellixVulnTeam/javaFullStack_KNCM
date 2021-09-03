@@ -15,9 +15,11 @@ public interface ReimbursementDao {
 	List<Reimbursement> getAllReimbursement() throws SQLException;
 
 	
-	void getReimbursementByUserId(int userId) throws SQLException;
+	List<Reimbursement> getReimbursementByUserId(int userId) throws SQLException;
 
-	
-	
+	List<Reimbursement> getReimbursementType(String type) throws SQLException;
+
+	List<Reimbursement> getReimbursementStatus(String status) throws SQLException;
+
 	
 }

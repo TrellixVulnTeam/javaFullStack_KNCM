@@ -10,4 +10,14 @@
   <url-pattern>/ViewAllEmployees</url-pattern>
   </servlet-mapping>
   
+  
+    <servlet>
+  <servlet-name>ViewAllReimbursement</servlet-name>
+  <servlet-class>servlet.ViewAllReimbursement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>ViewAllReimbursement</servlet-name>
+  <url-pattern>/ViewAllReimbursement</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
