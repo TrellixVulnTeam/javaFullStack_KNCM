@@ -21,11 +21,11 @@ public class GetReimbursementByUserId extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
 		response.setContentType("text/html");
 		
 		try(PrintWriter out=response.getWriter()){
 			
+
 			
 			int userId=Integer.valueOf(request.getParameter("id"));
 			
@@ -77,7 +77,8 @@ public class GetReimbursementByUserId extends HttpServlet{
 			
 			
 			out.println("<hr>");
-			request.getRequestDispatcher("/employeeNavbar.html").include(request, response);;
+			request.getRequestDispatcher("/employeeNavbar.html").include(request, response);
+
 			out.println("<br>");
 			
 		} catch (ClassNotFoundException e) {

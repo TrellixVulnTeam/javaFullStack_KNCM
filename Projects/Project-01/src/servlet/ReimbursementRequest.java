@@ -45,7 +45,7 @@ public class ReimbursementRequest extends HttpServlet{
 			out.println("Your Reimbursement added");
 			
 			out.println("<hr>");
-			request.getRequestDispatcher("/employeeNavbar.html").include(request, response);;
+			request.getRequestDispatcher("/adminNavbar.html").include(request, response);;
 			out.println("<br>");
 			
 			

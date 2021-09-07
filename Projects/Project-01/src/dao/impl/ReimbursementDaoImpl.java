@@ -100,6 +100,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		List<Reimbursement> reimbursements=new ArrayList();
 		
 		String sql="select * from reimbursement where  empl_id=?";
+		
 		PreparedStatement ps=connection.prepareStatement(sql);
 		ps.setInt(1, userId);
 		ResultSet rs=ps.executeQuery();
@@ -160,4 +161,24 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		return reimbursements;
 	}
 
+	
+	
+	@Override
+	public void changeReimbursementStatus(Reimbursement reim) throws SQLException {
+		String sql="update reimbursement set status=? where reimbursement_id=?";
+	
+		PreparedStatement ps=connection.prepareStatement(sql);
+		
+		ps.setString(1, reim.getStatus());
+		ps.setInt(2, reim.getReimbursementId());
+		
+		int count=ps.executeUpdate();
+		
+		if (count>0) {
+			System.out.println("Reimbursement status updated!!");
+		}else {
+			System.out.println("Something went Wrong!!!!");
+		}
+		
+	}
 }

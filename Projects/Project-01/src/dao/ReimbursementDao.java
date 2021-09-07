@@ -21,5 +21,6 @@ public interface ReimbursementDao {
 
 	List<Reimbursement> getReimbursementStatus(String status) throws SQLException;
 
+	void changeReimbursementStatus(Reimbursement reim) throws SQLException;
 	
 }

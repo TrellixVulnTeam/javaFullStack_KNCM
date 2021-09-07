@@ -15,32 +15,35 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
-public class ViewAllReimbursement extends HttpServlet{
-
+@WebServlet("/status")
+public class GetReimByStatus extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
-		response.setContentType("text/html");
+	response.setContentType("text/html");
 		
 		try(PrintWriter out=response.getWriter()){
-
 			
-			request.getRequestDispatcher("/adminNavbar.html").include(request, response);;
-			out.println("<br>");
-			out.println("<hr>");
+			
+			String status=request.getParameter("status1");
+			
+			
+			
+			Reimbursement reimStatus=new Reimbursement();
+			reimStatus.setType(status);
+			
 
 			ReimbursementDao dao=ReimbursementDaoFactory.getReimbursementDao();
-			List<Reimbursement> riems=dao.getAllReimbursement();
+			List<Reimbursement> riemStatuses=dao.getReimbursementStatus(status);
 			
 			out.println("<!DOCTYPE html>");
 			out.println("<HTML>");
 			out.println("<Head>");
-			out.println("<Title>...Reimbursement..</Title>");
+			out.println("<Title>...Reimbursement Status..</Title>");
 			out.println("</Head>");
-			out.println("<Body style='background-color:#09ba91'>");
-			out.println("<h1>Here is Your Reimbursement List</h1>");
+			out.println("<Body>");
+			out.println("<h1>Reimbursement Status</h1>");
 			out.println("<table border=1 width=50% height=50%>"); 
 			out.println("<tr><th>Reimbursement id</th>");
 			out.println("<th>User id</th>");
@@ -50,19 +53,24 @@ public class ViewAllReimbursement extends HttpServlet{
 			out.println("<th>Reimbursement Status</th></tr>");
 			
 			
-			for(Reimbursement reim:riems) {
-				int reimId=reim.getReimbursementId();
-				int userId=reim.getEmplId();
-				double amount=reim.getAmount();
-				String submitDate=reim.getSubmitDate();
-				String type=reim.getType();
-				String status=reim.getStatus();
+			for(Reimbursement reimStatus1:riemStatuses) {
+				
+				int rmid=reimStatus1.getReimbursementId();
+				int empId=reimStatus1.getEmplId();
+				double amount=reimStatus1.getAmount();
+				
+				String submitDate=reimStatus1.getSubmitDate();
+				String reimtype=reimStatus1.getType();
+				String reimstatus=reimStatus1.getStatus();
+						
+				
+			
 
-				 out.println("<tr><td>"+reimId+"</td>");
-				 out.println("<td>"+userId+"</td>");
+				 out.println("<tr><td>"+rmid+"</td>");
+				 out.println("<td>"+empId+"</td>");
 				 out.println("<td>"+amount+"</td>");
 				 out.println("<td>"+submitDate+"</td>");
-				 out.println("<td>"+type+"</td>");
+				 out.println("<td>"+reimtype+"</td>");
 				 out.println("<td>"+status+"</td>");
 
 			}
@@ -72,6 +80,9 @@ public class ViewAllReimbursement extends HttpServlet{
 			out.println("</html>");
 			
 			
+			out.println("<hr>");
+			request.getRequestDispatcher("/adminNavbar.html").include(request, response);;
+			out.println("<br>");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -82,7 +93,5 @@ public class ViewAllReimbursement extends HttpServlet{
 		}
 	}
 	
-	
-	
-	
+
 }
