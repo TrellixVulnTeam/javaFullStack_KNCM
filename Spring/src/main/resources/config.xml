@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/p "
+
+
+>
+    <!-- example :1,2-->
+
+    <!--First bean -->
+    <bean class="com.md.Student" name="st1">
+        <property name="studentId">
+            <value>100</value>
+        </property>
+        <property name="studentName">
+            <value>md</value>
+        </property>
+        <property name="studentLocation">
+            <value>USA</value>
+        </property>
+    </bean>
+
+    <!--Second bean using value attribute-->
+
+    <bean class="com.md.Student" name="st2">
+        <property name="studentId" value="200"/>
+        <property name="studentName" value="shihab"/>
+        <property name="studentLocation" value="UK"/>
+
+    </bean>
+
+    <!-- Third Bean using p schema  -->
+
+    <bean class="com.md.Student" name="st3" p:studentId="300" p:studentName="Uddin" p:studentLocation="BAN"/>
+
+    <bean class="com.md.Employee" name="employee1">
+        <property name="name" value="md shihab uddin"/>
+
+        <property name="phones">
+            <list>
+                <value>1111</value>
+                <value>2222</value>
+                <value>3333</value>
+
+            </list>
+        </property>
+
+        <property name="addresses">
+            <set>
+                <value>Ban</value>
+                <value>USA</value>
+                <value>UK</value>
+            </set>
+        </property>
+
+        <property name="departments">
+            <map>
+                <entry key="admin" value="USA"/>
+                <entry key="HR" value="UK"/>
+                <entry key="Sales" value="BAN"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <!-- example :3 -->
+    <!-- Reference type -->
+
+    <bean class="com.md.Address" name="address2">
+        <constructor-arg value="city 1"/>
+        <constructor-arg value="country 1"/>
+    </bean>
+
+    <bean class="com.md.Customer" name="customer1">
+        <constructor-arg value="140"/>
+        <constructor-arg value="md shihab uddin"/>
+        <constructor-arg ref="address2"/>
+
+    </bean>
+
+    <bean class="com.md.EmployeeRef" name="emp1">
+        <constructor-arg value="150"/>
+        <constructor-arg value=" shihab mahi"/>
+        <constructor-arg ref="address2"/>
+
+    </bean>
+
+
+    <!-- example :4-->
+    <bean class="com.md.Calcutation" name="cal1">
+        <constructor-arg value="100" type="int" index="1"/>
+        <constructor-arg value="200" type="int" index="0"/>
+
+    </bean>
+
+
+    <!-- example :5-->
+    <!-- bean -->
+    <bean class="com.md.EmployeeBean" name="employeeBean" init-method="init" destroy-method="destory">
+        <property name="name" value="md from employee bean"/>
+    </bean>
+
+
+    <bean class="com.md.StudentBean" name="studentBean">
+        <property name="name" value="md from student bean"/>
+    </bean>
+
+</beans>

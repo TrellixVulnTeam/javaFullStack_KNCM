@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/p">
+
+    <context:annotation-config/>
+
+    <bean class="com.md.Subject" name="subject">
+        <property name="subId" value="102"/>
+        <property name="subject" value="java"/>
+    </bean>
+
+
+    <!--    <bean class="com.md.Subject" name="subject2">-->
+    <!--        <property name="subId" value="102"/>-->
+    <!--        <property name="subject" value="java"/>-->
+    <!--    </bean>-->
+    <!--    -->
+    <!-- using references type-->
+    <!--    <bean class="com.md.Student" name="student">-->
+    <!--        <property name="id" value="100"/>-->
+    <!--        <property name="name" value="md"/>-->
+    <!--        <property name="subject" ref="subject"/>-->
+    <!--    </bean>-->
+
+    <!-- using Autowire byName-->
+    <!-- Name should be the same as student subject name-->
+
+    <!--    <bean class="com.md.Student" name="student" autowire="byName">-->
+    <!--        <property name="id" value="100"/>-->
+    <!--        <property name="name" value="md"/>-->
+    <!--    </bean>-->
+
+    <!-- using Autowire byType-->
+<!--    <bean class="com.md.Student" name="student" autowire="byType">-->
+<!--        <property name="id" value="100"/>-->
+<!--        <property name="name" value="md"/>-->
+<!--    </bean>-->
+
+    <bean class="com.md.Student" name="student">
+
+    </bean>
+
+</beans>
