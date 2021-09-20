@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11495db3-2003-44fa-9c82-95626f5b0b89" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringDemo/src/main/java/com/md/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringDemo/src/main/java/com/md/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringDemo/src/main/resources/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/Calcutation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/EmployeeBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/EmployeeRef.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/md/StudentBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/repository/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/service/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/FirstSpringBoot-demo/FirstSpringBoot-demo/src/main/java/com/md/FirstSpringBootdemo/service/EmployeeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/src/main/java/com/md/Springdatajpaproject/SpringDataJpaProjectApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spring_Boot/Spring-data-jpa-project/Spring-data-jpa-project/src/test/java/com/md/Springdatajpaproject/SpringDataJpaProjectApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1xrzEj6KeUWJ5GVyBdpvN4G2rKC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SpringDemo" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="android.project.structure" />
+  </component>
+  <component name="RunManager">
+    <configuration name="All in Spring-MVC-demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Spring-MVC-demo" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in Spring-MVC-demo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11495db3-2003-44fa-9c82-95626f5b0b89" name="Default Changelist" comment="" />
+      <created>1631127886588</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631127886588</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Spring_MVC_demo$All_in_Spring_MVC_demo.ic" NAME="All in Spring-MVC-demo Coverage Results" MODIFIED="1631130991142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
